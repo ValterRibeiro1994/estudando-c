@@ -7,7 +7,7 @@
     maior que o necessario  
 */
 int main(void) {
-    long double x, y;
+    double x, y, total;
 
     printf("Digite o valor de x: ");
     scanf("%lf", &x);
@@ -15,7 +15,7 @@ int main(void) {
     printf("Digite o valor de y: ");
     scanf("%lf", &y);
 
-    double total = x + y;
+    total = x + y;
     printf("A soma de %.2f + %.2f = %.2f\n", x, y, total);
 
     return 0;

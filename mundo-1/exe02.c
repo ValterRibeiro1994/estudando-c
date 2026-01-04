@@ -9,7 +9,7 @@
 */
 int main(void){
     char pessoa[15];
-    pessoa[14]= '\0'; // isso não impede de erros por excesso de caracteres.
+    pessoa[14] = '\0'; // isso não impede de erros por excesso de caracteres.
     printf("Digite seu nome: ");
     scanf("%s", pessoa); // Só pega o primeiro nome antes do primeiro espaço
     printf("Bem vindo %s.\n", pessoa);

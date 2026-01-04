@@ -1,3 +1,9 @@
+/*
+Um professor quer sortear um dos seus quatro alunos para apagar o quadro. 
+Faça um programa que ajude ele, lendo o nome dos alunos e escrevendo na 
+tela o nome do escolhido.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,7 +14,7 @@ int gerar_indice_aleatorio(int limite) {
 }
 
 char* obter_nome(int tamanho){
-    char* nome = malloc(tamanho);
+    char* nome = malloc(tamanho * sizeof(char));
     if (nome == NULL) { return NULL; }
 
     printf("Informe o nome do aluno: ");

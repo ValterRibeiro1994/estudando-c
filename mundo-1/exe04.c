@@ -8,65 +8,46 @@
     - Esse exercicio me trouxe o conhecimento do ctype, e do stdbool que por um momento achei que não teria (true e false)
     
 */
+
 int main(void){
-    // coletar a entrada
-    char entrada[20]; // acredito que deve ser suficiente
-    printf("Digite algo: ");
-    scanf("%19s", entrada);
-
-    // inicializar variáveis
-    bool tem_letra = false;
-    bool tem_numero = false;
-    bool tem_ponto = false;
-    bool eh_decimal = false;
-    bool eh_inteiro = true;
-
-    int n = strlen(entrada);
-    for (int i = 0; i < n; i++){
-        if (isalpha(entrada[i])){
-            tem_letra = true;
-        } else if (isdigit(entrada[i])){
-            tem_numero = true;
-        } else if (entrada[i] == '.'){
+    // variaveis
+    char entrada[20]; // variavel texto -> coletar entrada do teclado
+    bool tem_letra, tem_numero, tem_ponto = false; // variavel booleana -> confirmar a entrada do usuario
+    int n; // variavel inteira -> coletar o comprimento da entrada
+    
+    // inicio -> coletar entrada do usuario
+    printf("Escreva algo pelo teclado: "); // interface 1 - Entrada
+    scanf("%s", entrada); // processo 1 - Leitura do teclado
+    
+    // Processo -> Analisar entrada do usuario
+    n = strlen(entrada); // processo 2 - capturar comprimento da entrada
+    for (int i = 0; i < n; i++){ // processe 3 - Percorrer cada caractere informado
+        char caractere = entrada[i]; // processo 4 - Copia o caractere atual
+        if (caractere == '.'){ // processo 5 - Verifica se o caractere atual é um ponto
             tem_ponto = true;
-        } else {
-            eh_inteiro = false;
+        } else if (isalpha(caractere)){ // processo 6 - Verifica se o caractere atual é uma letra
+            tem_letra = true;
+        } else if (isdigit(caractere)){ // processo 7 - Verifica se o caractere atual é um número
+            tem_numero = true;
         }
     }
 
-    if (tem_letra && !tem_numero){
-        printf("'%s' e uma palavra.\n", entrada);
-    } else if (tem_numero && !tem_letra && !tem_ponto){
-        int numero = (int) entrada;
-        if (numero < 0){
-            printf("'%s' e um numero inteiro Negativo.\n", entrada);
-        } else if (numero > 0){
-            printf("'%s' e um numero inteiro Positivo.\n", entrada);
+    printf("Entrada recebida: %s", entrada);
+    if (tem_letra && !tem_numero){ // tem letras e não tem numeros
+        if (n == 1){
+            printf("\nEntrada recebida: %s -> E uma letra", entrada);
         } else {
-            printf("'%s' e um numero inteiro Nulo ( 0 ).\n", entrada);
-
+            printf("\nEntrada recebida: %s -> E uma palavra", entrada);
         }
-        
-    } else if (tem_numero && tem_ponto && !tem_letra){
-        int numero = (int) entrada;
-        if (numero < 0){
-            printf("'%s' e um numero decimal Negativo.\n", entrada);
-        } else if (numero > 0){
-            printf("'%s' e um numero decimal Positivo.\n", entrada);
+    } else if (tem_numero && !tem_letra){ // tem numeros e não tem letras
+        if (tem_ponto){ // é numero e tem pontos
+            printf("\nEntrada recebida: %s -> E um numero real", entrada);
         } else {
-            printf("'%s' e um numero decimal Nulo ( 0 ).\n", entrada);
+            printf("\nEntrada recebida: %s -> E um numero inteiro", entrada);
         }
-        
-    } else if (n == 1 && isalpha(entrada[0])){
-        printf("'%s' e uma letra.\n", entrada);
-    } else {
-        printf("'%s' e uma mistura de tipos.\n", entrada);
+    } else if (tem_letra && tem_numero){
+        printf("\nEntrada recebida: %s -> Tem numeros e letras", entrada);
     }
 
-    printf("\n--- Detalhes ---\n");
-    printf("Quantidade de caracteres: %zu\n", strlen(entrada));
-    printf("Contem letras? %s\n", tem_letra ? "Sim" : "Nao");
-    printf("Contem numeros? %s\n", tem_numero ? "Sim" : "Nao");
-    printf("Contem ponto decimal? %s\n", tem_ponto ? "Sim" : "Nao");
     return 0;
 }
