@@ -1,2 +1,2 @@
-# Todos os exercicios foram inspirados no mundo 1 do curso de python do professor guanabara
-Essa lista possui mais de 100 exercicios 
+# Todos os exercícios foram inspirados no mundo 1 do curso de python do professor Guanabara
+Essa lista possui mais de 100 exercícios.
